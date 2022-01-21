@@ -42,3 +42,14 @@ redux-thunk is a middleware for Redux. With redux-thunk you can return functions
 - Worth noting, redux-saga does not use regular JavaScript function. You will see a lot of asterisks and "yield" in your sagas. Those asterisks mark generator functions!
 - Generator functions in JavaScript are function which can be paused and resumed on demand. redux-saga relies heavily on generator functions but the good thing is that you won't need to call next() in your code. redux-saga handles that for you under the hood.
 
+- Install redux-saga
+$ npm i redux-saga --save-dev
+
+## Branch: redux-saga
+- contains refactored code to use redux-saga instead of redux-thunk
+
+- Now, how do you structure a saga? A redux saga could live in a single file containing:
+    - a worker function
+    - a watcher function
+- The watcher is a generator function watching for every action we are interested in. In response to that action, the watcher will call a worker saga, which is another generator function for doing the actual API call.
+- The worker saga will call the remote API with call from redux-saga/effects. When the data is loaded we can dispatch another action from our saga with put, again, from redux-saga/effects.
