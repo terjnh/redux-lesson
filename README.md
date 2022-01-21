@@ -31,3 +31,14 @@ For making things work we need a custom middleware. Luckily there's something re
 
 - Install redux-thunk
 $ npm i redux-thunk --save-dev
+
+-- Redux does not understand other types of actions other than a plain object. 
+redux-thunk is a middleware for Redux. With redux-thunk you can return functions from action creators, not only objects. You can do asynchronous work inside your actions and dispatch other actions in response to AJAX calls.
+
+
+* Redux Saga
+- redux-saga is a Redux middleware for managing side effects. With redux-saga you can have a separate thread in your application for dealing with impure actions: API calls, storage access, and more.
+- With redux-thunk you can put an API call directly inside an action creator while in redux-saga you can have clear separation between synchronous and asynchronous logic.
+- Worth noting, redux-saga does not use regular JavaScript function. You will see a lot of asterisks and "yield" in your sagas. Those asterisks mark generator functions!
+- Generator functions in JavaScript are function which can be paused and resumed on demand. redux-saga relies heavily on generator functions but the good thing is that you won't need to call next() in your code. redux-saga handles that for you under the hood.
+
